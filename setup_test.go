@@ -50,7 +50,7 @@ func Test(t *testing.T) {
 	u := launcher.New().
 		Delete("disable-extensions").
 		Set("load-extension", extPath).
-		Launch()
+		MustLaunch()
 
 	s := new(S)
 	s.client = cdp.New(u)

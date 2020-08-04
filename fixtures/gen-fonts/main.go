@@ -16,7 +16,7 @@ import (
 )
 
 func main() {
-	url := launcher.New().Headless(true).Launch()
+	url := launcher.New().Headless(true).MustLaunch()
 	b := rod.New().ControlURL(url).Connect()
 	defer b.Close()
 

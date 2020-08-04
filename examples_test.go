@@ -96,7 +96,7 @@ func Example_headless_with_debug() {
 	url := launcher.New().
 		Headless(false).
 		Devtools(true).
-		Launch()
+		MustLaunch()
 
 	// Trace shows verbose debug information for each action executed
 	// Slowmotion is a debug related function that waits 2 seconds between
@@ -226,7 +226,7 @@ func Example_customize_browser_launch() {
 		Set("proxy-server", "127.0.0.1:8080").
 		// Delete a flag- remove the mock-keychain flag
 		Delete("use-mock-keychain").
-		Launch()
+		MustLaunch()
 
 	browser := rod.New().ControlURL(url).Connect()
 	defer browser.Close()

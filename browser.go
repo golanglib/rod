@@ -163,13 +163,13 @@ func (b *Browser) ConnectE() (err error) {
 			b.client = launcher.NewRemote(u).Client()
 		} else {
 			if u == "" {
-				u = launcher.New().Context(b.ctx).Launch()
+				u = launcher.New().Context(b.ctx).MustLaunch()
 			}
 			b.client = cdp.New(u)
 		}
 	}
 
-	b.client.Context(b.ctx, b.ctxCancel).Connect()
+	b.client.Context(b.ctx, b.ctxCancel).MustConnect()
 
 	b.monitorServer = b.ServeMonitor(defaults.Monitor, !defaults.Blind)
 
