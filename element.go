@@ -83,7 +83,7 @@ func (el *Element) ClickE(button proto.InputMouseButton) error {
 		return err
 	}
 	if !clickable {
-		return fmt.Errorf("%w: %s", newErr(ErrNotClickable, el.HTML()), "such as covered by a modal")
+		return newErr(ErrNotClickable, el.HTML(), "such as covered by a modal")
 	}
 
 	defer el.tryTrace(string(button) + " click")()
