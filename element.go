@@ -545,7 +545,7 @@ func (el *Element) ensureParentPage(nodeID proto.DOMNodeID, objID proto.RuntimeR
 	// DFS for the iframe that holds the element
 	var walk func(page *Page) error
 	walk = func(page *Page) error {
-		list, err := page.Elements("", "iframe")
+		list, err := page.Elements("iframe")
 		if err != nil {
 			return err
 		}

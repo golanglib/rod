@@ -59,7 +59,7 @@ func (s *S) TestSearch() {
 	s.Equal("click me", el.MustText())
 	s.True(el.MustClick().MustMatches("[a=ok]"))
 
-	_, err := p.Sleeper(nil).Search([]string{"not-exists"}, 0, 1)
+	_, err := p.Sleeper(nil).Search(0, 1, "not-exists")
 	s.True(errors.Is(err, rod.ErrElementNotFound))
 }
 

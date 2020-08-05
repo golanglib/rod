@@ -391,14 +391,14 @@ func (p *Page) MustHasMatches(selector, regex string) bool {
 // The query can be plain text or css selector or xpath.
 // It will search nested iframes and shadow doms too.
 func (p *Page) MustSearch(queries ...string) *Element {
-	list, err := p.Search(queries, 0, 1)
+	list, err := p.Search(0, 1, queries...)
 	utils.E(err)
 	return list.First()
 }
 
 // MustElement retries until an element in the page that matches one of the CSS selectors
 func (p *Page) MustElement(selectors ...string) *Element {
-	el, err := p.Element("", selectors)
+	el, err := p.Element(selectors...)
 	utils.E(err)
 	return el
 }
@@ -407,7 +407,7 @@ func (p *Page) MustElement(selectors ...string) *Element {
 // Each pairs is a css selector and a regex. A sample call will look like page.MustElementMatches("div", "click me").
 // The regex is the js regex, not golang's.
 func (p *Page) MustElementMatches(pairs ...string) *Element {
-	el, err := p.ElementMatches("", pairs)
+	el, err := p.ElementMatches(pairs...)
 	utils.E(err)
 	return el
 }
@@ -421,21 +421,21 @@ func (p *Page) MustElementByJS(js string, params ...interface{}) *Element {
 
 // MustElements returns all elements that match the css selector
 func (p *Page) MustElements(selector string) Elements {
-	list, err := p.Elements("", selector)
+	list, err := p.Elements(selector)
 	utils.E(err)
 	return list
 }
 
 // MustElementsX returns all elements that match the XPath selector
 func (p *Page) MustElementsX(xpath string) Elements {
-	list, err := p.ElementsX("", xpath)
+	list, err := p.ElementsX(xpath)
 	utils.E(err)
 	return list
 }
 
 // MustElementX retries until an element in the page that matches one of the XPath selectors
 func (p *Page) MustElementX(xPaths ...string) *Element {
-	el, err := p.ElementX("", xPaths)
+	el, err := p.ElementX(xPaths...)
 	utils.E(err)
 	return el
 }
