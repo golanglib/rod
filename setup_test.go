@@ -54,11 +54,11 @@ func Test(t *testing.T) {
 
 	s := new(S)
 	s.client = cdp.New(u)
-	s.browser = rod.New().ControlURL("").Client(s.client).Connect()
+	s.browser = rod.New().ControlURL("").Client(s.client).MustConnect()
 
-	defer s.browser.Close()
+	defer s.browser.MustClose()
 
-	s.page = s.browser.Page("")
+	s.page = s.browser.MustPage("")
 
 	suite.Run(t, s)
 }

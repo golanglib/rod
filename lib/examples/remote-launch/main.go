@@ -13,13 +13,13 @@ func main() {
 	// docker run -p 9222:9222 rodorg/rod
 	client := launcher.NewRemote("ws://localhost:9222").Client()
 
-	browser := rod.New().Client(client).Connect()
+	browser := rod.New().Client(client).MustConnect()
 
 	// You may want to start a server to watch the screenshots inside the docker
 	browser.ServeMonitor(":7777", true)
 
 	fmt.Println(
-		browser.Page("https://github.com").Eval("() => document.title"),
+		browser.MustPage("https://github.com").MustEval("() => document.title"),
 	)
 
 	kit.Pause()

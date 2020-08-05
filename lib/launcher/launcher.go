@@ -254,7 +254,7 @@ func (l *Launcher) MustLaunch() string {
 	return u
 }
 
-// Launch doc is similar to the method Launch
+// Launch doc is similar to the method MustLaunch
 func (l *Launcher) Launch() (wsURL string, err error) {
 	defer func() {
 		if e := recover(); e != nil {
